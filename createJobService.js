@@ -1,9 +1,7 @@
 import uuid from 'uuid/v1';
 import Job from './job';
 
-const MQExchangeName = 'jobExchaneg';
-
-export default function createJobService(MQChannel) {
+export default function createJobService(mqChannel, mqExchangeName) {
   return (req, res) => {
     console.log(req.body);
     const jobObj = req.body;
@@ -24,7 +22,7 @@ export default function createJobService(MQChannel) {
       // jobInputFile,
     });
 
-    MQChannel.publish(MQExchangeName, jobDistRouteKey,
+    mqChannel.publish(mqExchangeName, jobDistRouteKey,
         new Buffer(JSON.stringify(Object.assign(jobObj, { jobId })))
     );
     job.save()

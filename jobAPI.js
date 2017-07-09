@@ -9,10 +9,14 @@ const app = express();
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-createDBConnection()
-  .then(() => createMQConnection())
-  .then((MQChannel) => {
-    defineAPIRoute(app, MQChannel);
+const dbUrl = 'mongodb://localhost/db';
+const mqUrl = 'amqp://locaohost';
+const mqExchangeName = 'jobExchange';
+
+createDBConnection(dbUrl)
+  .then(() => createMQConnection(mqUrl, mqExchangeName))
+  .then((mqChannel) => {
+    defineAPIRoute(app, mqChannel, mqExchangeName);
     const server = app.listen(8081, '127.0.0.1', () => {
       const host = server.address().address;
       const port = server.address().port;

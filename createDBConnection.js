@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
-export default function createDBConnection() {
-  return mongoose.connect('mongodb://localhost/db', {
+export default function createDBConnection(dbUrl) {
+  return mongoose.connect(dbUrl, {
     useMongoClient: true,
   });
 }
