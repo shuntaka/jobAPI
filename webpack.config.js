@@ -1,17 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
-
+var fs = require('fs');
+var nodeExternals = require('webpack-node-externals');
 module.exports = {
-  entry: path.join(__dirname, '/jobProducer.js'),
+  entry: path.join(__dirname, '/jobAPI.js'),
   target: 'node',
-  output: {
-    path: path.join(__dirname, '/public'),
-    filename: 'jobProducerBundle.js',
-    libraryTarget: 'commonjs',
-  },
-  externals: [
-    /^(?!\.|\/).+/i,
-  ],
   module: {
     loaders: [
       {
@@ -26,4 +19,9 @@ module.exports = {
   // plugins: [
   //   new webpack.IgnorePlugin(/vertx/),
   // ],
+  output: {
+    path: path.join(__dirname, '/public'),
+    filename: 'jobAPIBundle.js',
+  },
+  externals: [nodeExternals()]
 };

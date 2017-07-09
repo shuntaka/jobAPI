@@ -3,7 +3,7 @@ import uuid from 'uuid/v1';
 import Job from './job';
 
 
-mongoose.connect('mongodb://localhost/jobDB');
+mongoose.connect('mongodb://localhost/db');
 
 function createJobService(channel) {
   return (req, res) => {
@@ -12,13 +12,13 @@ function createJobService(channel) {
     const jobId = uuid();
     const jobName = jobObj.jobName;
     const jobInput = jobObj.jobInput;
-    const jobInputFile = jobObj.jobInputFile;
+    // const jobInputFile = jobObj.jobInputFile;
 
     const job = new Job({
       jobId,
       jobName,
       jobInput,
-      jobInputFile,
+      // jobInputFile,
     });
     job.save((err, data) => {
       if (err) return console.log(err);

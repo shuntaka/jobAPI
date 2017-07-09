@@ -1,5 +1,5 @@
 {
-  "name": "RPATaskProducer",
+  "name": "jobAPI",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,7 +19,8 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
-    "webpack": "^2.6.0"
+    "webpack": "^2.6.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
     "EventEmitter": "^1.0.0",
