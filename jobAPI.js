@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 const dbUrl = 'mongodb://localhost/db';
-const mqUrl = 'amqp://locaohost';
+const mqUrl = 'amqp://localhost';
 const mqExchangeName = 'jobExchange';
 
 createDBConnection(dbUrl)
