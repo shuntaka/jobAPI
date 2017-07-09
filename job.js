@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 // create a schema
 const jobSchema = new Schema({
   jobId: String,
+  userId: String,
   jobName: String,
   status: String,
   jobInput: Schema.Types.Mixed,
